@@ -2,6 +2,8 @@ word,单词
 play,使用
 attack, 攻击力(n)/攻击(v)
 health, 治疗(n)/恢复(v)/
+trigger, 触发技(n)/触发(v)
 
 sequence, 流程
 phase, 时点
+resolve, 处理
