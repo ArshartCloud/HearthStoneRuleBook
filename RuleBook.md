@@ -4,6 +4,7 @@ Sequences, Phases, Queues, Resolution
 ===================
 Definition: Player Actions are actions a player chooses to take on their turn while nothing is happening, such as attacking, playing a card, using your Hero Power and ending your turn.
 定义：玩家动作是玩家在空闲点能发起的动作，如攻击，使用一张牌，使用英雄技能及结束回合。
+
 Definition: A Sequence is what begins when a Player Action is taken. A Sequence consists of one or more Phases, that are resolved in order.
 定义：流程是从玩家动作作为开始产生的一系列结算步骤。一个流程包含一个或多个依次处理的时点。
 Definition: Phases are surrounding blocks created whenever one or more triggers/Events are raised. When the outermost Phase resolves, Hearthstone will run several Steps, including processing Deaths and updating Auras.
