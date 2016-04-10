@@ -24,7 +24,7 @@ Player Actions (such as Combat, playing a card and ending the turn) form a Seque
 
 Examples
 
-例如
+例子
 
 Sending a Character to attack another character creates a Sequence of two Phases - "Preparation" and "Attack".
 
@@ -72,6 +72,7 @@ The moment a new trigger/Event is raised, Hearthstone begins to resolve it and i
  当一个新的触发技/事件发生时，炉石传说会先处理它并在处理那些还在等待的触发技/事件前，先展开它的结果，当一个触发技/事件被处理后，炉石会从它原先的地方继续结算。
  
 Examples
+例子
 
 You Flamestrike a Dragon Egg and Knife Juggler. The Dragon Egg immediately spawns a Black Whelp, causing the Knife Juggler to trigger and throw a knife (even though both are mortally wounded, because death is not checked during resolution). There are no further consequences, so the phase is resolved. Hearthstone kills both minions, removing them from the board.
 
