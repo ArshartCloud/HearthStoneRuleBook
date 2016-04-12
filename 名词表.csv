@@ -1,7 +1,9 @@
 word,单词
 play,使用
 attack, 攻击力(n)/攻击(v)
-health, 治疗(n)/恢复(v)/
+health, 治疗(n)/恢复(v)
+Mana Cost, 法力值消耗
+Mana Crystal, 法力水晶
 trigger, 触发技(n)/触发(v)
 
 sequence, 流程
@@ -11,3 +13,6 @@ attach, 结附
 enchantment, 结界
 trade, (随从)交换
 Death Creation Step, 死亡创造步骤
+Aura, 光环
+mortally wounded, 受了致命伤
+steal, 窃取
