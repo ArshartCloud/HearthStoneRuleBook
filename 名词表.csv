@@ -2,18 +2,25 @@ word,单词
 play,使用
 attack, 攻击力(n)/攻击(v)
 health, 治疗(n)/恢复(v)
+hand, 手牌
+deck, 牌库
 Mana Cost, 法力值消耗
 Mana Crystal, 法力水晶
-trigger, 触发技(n)/触发(v)
+cast spells, 施放法术
 
 sequence, 流程
 phase, 时点
 resolve, 结算
 attach, 结附
 enchantment, 结界
+trigger, 触发技(n)/触发(v)
 trade, (随从)交换
 Death Creation Step, 死亡创造步骤
 Aura, 光环
 mortally wounded, 受了致命伤
 steal, 窃取
 requirement/condition, 条件
+exhaustion, 疲倦
+queue, 队列(n)/排队(v)
+removed from play, 移出场上
+Summon Resolution Step, 召唤结算步骤

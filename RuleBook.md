@@ -196,7 +196,7 @@ Rule 6: Subsequent Phases of a Sequence will not run if a subject is required bu
 规则6：一个流程中的子时点，如果其条件中的对象不再存在，该时点不会结算。然而，这是唯一的条件——如果该动作的目标有一些其他条件，则这些条件不会再次检测。
 
 Rule 7: If one or more Deaths happened after the outermost Phase ended, a new Phase (called a “Death Phase”) begins, where Deaths are Queued in order of play. For each Death, all Death Event triggers (Deathrattles, on-Death Secrets and on-Death triggered effects) are Queued and resolved in order of play. When this is complete, the Death has been resolved.  
-如果一个或更多的死亡在最外层时点结束后同时发生，一个新的时点（称作“死亡时”）会开始，每个角色的死亡会按使用顺序依次排入队列。对于每一个死亡，所有死亡事件触发技（亡语，死亡时的奥秘，死亡时的触发技）会依次按使用顺序排入队列结算。当这些完成后，死亡结算完毕。
+规则7：如果一个或更多的死亡在最外层时点结束后同时发生，一个新的时点（称作“死亡时”）会开始，每个角色的死亡会按使用顺序依次排队。对于每一个死亡，所有死亡事件触发技（亡语，死亡时的奥秘，死亡时的触发技）会依次按使用顺序排队结算。当这些完成后，死亡结算完毕。
 
 Rule 8: A Death Phase can have yet another Death Phase after it. This process repeats forever until no new Deaths occur, and we can finally move on to the next intended Phase in the Sequence.  
 规则8：死亡时可能会在结束后生成另一个死亡时。这个过程会重复进行直到没有新的死亡生成，然后才进入流程中的下一个时点。
@@ -211,14 +211,83 @@ Rule 10b: Triggered effects with a condition do not check their condition until 
 规则10b：含条件的触发技只会在它们加入队列或触发（或者都需要）的时候检测条件。它们没有游戏之前状态的记忆，它们的条件是否满足取决于当前的游戏状态。
 
 Death Phases and consequences of Death
+死亡时及死亡的后果
 
 Player Action Sequences
+玩家动作流程
 
-Start and end of turn
+Start and end of turn  
+结束回合  
+Now that we know the 10 Rules, we can very simply describe what happens between turns:  
+End of Turn Phase: All 'end of turn' Triggers (as well as the special case Shadow Madness) are Queued and resolved.  
+回合结束时：所有“回合结束时”的触发技（包括特例暗影狂乱）加入队列结算。
+Hearthstone checks for win/loss/draw. The game is a draw if turn 89 (aka Player 1's 45th turn) just ended. It is now your opponent's turn. Hearthstone wears off expired enchantments (like Ice Block's effect and Bloodlust's effect), resets all counters related to 'this turn' (such as Deaths and cards played this turn), fills your opponent's mana, flips which player's weapons are sheathed/unsheathed, flips which player's Secrets are active, unflips your opponent's Hero Power and removes exhaustion from all characters.  
+炉石传说检测是否胜利/失败/平局。游戏会在第89回合（玩家1的第45回合）判定为平局。然后是你的对手的回合，炉石传说会移除过期的结界（如寒冰屏障的效果和嗜血的效果），重置所有‘本回合’的计数器（如本回合死亡数和使用的手牌），充满你的对手的法力水晶，翻转每个玩家的武器使其出鞘/入鞘，翻转每个玩家的奥秘，重置的你对手的英雄技能，移除所有角色的疲倦状态。  
+Start of Turn Phase: All 'start of turn' Triggers (including Corruption and Nightmare and Competitive Spirit) are Queued and resolved.  
+回合开始时：所有“回合开始时”的触发技（包括腐蚀术的效果，噩梦的效果和争强好胜）会被排队结算。  
+Hearthstone checks for win/loss/draw.  
+炉石传说检测是否胜利/失败/平局。  
+Draw a Card Phase: Your opponent draws one card, and any consequences are resolved now.  
+抽卡时： 你的对手抽一张卡， 且所有后果在这里结算。  
+Hearthstone checks for win/loss/draw.  
+炉石传说检测是否胜利/失败/平局。  
 
-End of Turn Phase: All 'end of turn' Triggers (as well as the special case Shadow Madness) are Queued and resolved.
-Hearthstone checks for win/loss/draw.[64] The game is a draw if turn 89 (aka Player 1's 45th turn) just ended.[65] It is now your opponent's turn. Hearthstone wears off expired enchantments (like Ice Block's effect and Bloodlust's effect), resets all counters related to 'this turn' (such as Deaths and cards played this turn), fills your opponent's mana, flips which player's weapons are sheathed/unsheathed, flips which player's Secrets are active[66], unflips your opponent's Hero Power and removes exhaustion from all characters.[67][68]
-Start of Turn Phase: All 'start of turn' Triggers (including Corruption and Nightmare[69] and Competitive Spirit[70]) are Queued and resolved.
-Hearthstone checks for win/loss/draw.[71]
-Draw a Card Phase: Your opponent draws one card, and any consequences are resolved now.
-Hearthstone checks for win/loss/draw.
+Playing a spell  
+使用法术牌  
+When you play a spell, the following Sequence takes place:  
+当你使用一张法术牌时，以下流程会发生：  
+The card is removed from your hand and enters Play and its Mana cost is paid. If it targets, the target is remembered (and its validity is not checked again).  
+该牌从你手上移除并进入场上且支付其法力消耗。如果它取对象，它的对象会被记住 （其合法性将不再检测）。  
+On Play Phase: All triggers on playing a card/casting a spell/playing a Secret Queue and resolve here, such as Unbound Elemental, Questing Adventurer, Mana Wyrm, Burly Rockjaw Trogg, Secretkeeper and Violet Teacher. Counterspell also triggers here - Counterspell will not stop triggers in this Phase, but will prevent the Overload and all further Phases and send the spell to the Graveyard. Preparation/Kirin Tor Mage also triggers here.  
+使用时：所有在使用牌时/施放法术时/使用奥秘时的触发技会在此排队结算，如无羁元素，任务达人，法力浮龙，石腭穴居人壮汉，奥秘守护者和紫罗兰教师。法术反制也会在此触发——法术反制不会中止该时点的其他触发技，但会防止过载和后面的时点并将法术牌送入墓地。伺机待发和肯瑞托法师也会在此触发。  
+Targeting Phase: Dragonkin Sorcerer, Eydis Darkbane and Fjola Lightbane Queue and Resolve here.  
+成为目标时：龙人巫师，黑暗邪使艾蒂丝和光明邪使菲奥拉会被排队结算。  
+Spellbender Phase: Spellbender queues and resolves here. (the Death Creation Step and Summon Resolution Step is skipped following this Phase.)  
+确定目标时：扰咒术会在此排队结算。（该时点后的死亡创造步骤和召唤结算步骤会被跳过）
+Spell Text Phase: The entirety of the spell text takes place in one Phase. All triggers to its events are fully resolved. (If it is a Secret, nothing happens here - it already entered play.)  
+法术生效时：法术的全部效果会在此一个时点发生。所有此事件的触发技会结算完。（如果是一个奥秘，则此时点无事发生——它已经进入了场上）  
+After Spell Phase: Wild Pyromancer, Flamewaker and Djinni of Zephyrs Queue and resolve here.  
+使用法术后：狂野炎术士，火妖和西风灯神会排队结算。  
+Hearthstone checks for win/loss/draw.  
+炉石传说检测是否胜利/失败/平局。  
+
+Playing a weapon  
+使用武器牌  
+When you play a weapon, the following Sequence takes place:  
+当你使用一张武器牌时，下列流程将会发生：    
+The card is removed from your hand and its Mana cost is paid. If it targets, the target is remembered.  
+该牌从你手上移除并进入场上且支付其法力消耗。如果它取对象，它的对象会被记住 （其合法性将不再检测）。  
+On Play Phase: All triggers on playing a card Queue and resolve here, such as Questing Adventurer, Fel Reaver and Illidan Stormrage.  
+使用时：所有在使用牌时的触发技会在此排队结算，如任务达人， 魔能机甲和伊利丹·怒风。  
+Equipping Phase: Your old weapon is destroyed and removed from play and your new weapon is equipped. The Battlecry of your new weapon (if any) is resolved. The Deathrattle of your old weapon (if any) is resolved.  
+装备时：你的旧武器被消灭及从场上移除且装备你的新武器。你的新武器的战吼（如果有）会在此结算。你的旧武器的亡语（如果有）会在此结算。  
+Hearthstone checks for win/loss/draw.  
+炉石传说检测是否胜利/失败/平局。
+
+Playing/summoning a minion  
+使用/召唤随从  
+When you Play a minion, the following Sequence takes place, which ends early if the minion leaves play (such as due to death):  
+当你使用一张随从牌，下列流程将会发生，如果随从在流程中从场上移除（如死亡），流程将会终止。  
+
+The card is removed from your hand and its Mana cost is paid. The card enters Play as a minion, creating a Summon Event and becoming interactible. (Cobalt Guardian and Murloc Tidecaller Queue and resolve before the played minion enters play due to the Pre-Summon Reaction Bug.) If it targets, the target is remembered (and its validity is not checked again).  
+该牌从你手上移除并进入场上且支付其法力消耗。该牌进入场上并成为一个随从，创造一个召唤事件，变为可交互状态（钴制卫士和鱼人招潮者会由于预召唤响应BUG在随从进场前排队结算）。如果它取对象，它的对象会被记住 （其合法性将不再检测）。  
+On Play Phase: Hobgoblin, Questing Adventurer, Fel Reaver, Unbound Elemental, Tunnel Trogg, Illidan Stormrage and Crowd Favorite Queue and resolve here.  
+使用时：大胖，任务达人，魔能机甲，无羁元素，坑道穴居人，伊利丹·怒风和人气选手会在此排队结算。  
+(Because of the Summon Resolution Step, Starving Buzzard, One-eyed Cheat, Undertaker and more Queue and resolve for the played minion here. )  
+（因为召唤结算步骤，饥饿的秃鹫，独眼欺诈者，送葬者等会在此排队结算。）  
+Battlecry Phase: The Battlecry/Combo/Choose One is fully resolved here. (If Brann Bronzebeard was under your control when the Phase began, run Aura Update (Health/Attack) then resolve the Battlecry again.)  
+战吼时：战吼/连击/抉择的效果会在此结算。（如果你在战吼时开始时操控布莱恩·铜须，则进行光环更新（攻击力/生命值），然后再次结算战吼。）
+After Play Phase: Mirror Entity, Repentance, Snipe, Sacred Trial and Rumbling Elemental Queue and resolve here. (the Death Creation Step and Summon Resolution Step are skipped following this Phase.)
+使用后：镜像实体，忏悔，狙击，审判和顽石元素在此排队结算。（该时点后的死亡创造步骤和召唤结算步骤会被跳过）
+After Summon Phase: Ship's Cannon, Knife Juggler, and Sword of Justice Queue and resolve here.  
+召唤后：船载火炮，飞刀杂耍者和公正之剑会在此排队结算。
+Hearthstone checks for winloss/draw.  
+炉石传说检测是否胜利/失败/平局。  
+
+If a minion is merely summoned rather than played, it is inside of a larger Phase, so we are currently not processing Deaths, updating Auras or checking for win/loss/draw. The Sequence is now far simpler:  
+如果一个随从只是单纯被召唤而非使用，它会处在一个时点中，因而不需要处理死亡，更新光环或检测胜负。这个流程会变得简单很多：  
+
+The card is generated (or moved from your hand/deck if due to a Force Play mechanic) and enters Play, creating a Summon Event and becoming interactible. (Cobalt Guardian and Murloc Tidecaller Queue and resolve before the played minion enters play due to the Pre-Summon Reaction Bug.)  
+一张衍生卡将会被生成（如果是通过强制使用机制，则从你的手牌/牌库）并进入战场，创造一个召唤事件并变为可交互状态。（钴制卫士和鱼人招潮者会由于预召唤响应BUG在随从进场前排队结算）。
+After Summon Phase  
+召唤后  
