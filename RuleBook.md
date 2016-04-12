@@ -291,3 +291,12 @@ The card is generated (or moved from your hand/deck if due to a Force Play mecha
 一张衍生卡将会被生成（如果是通过强制使用机制，则从你的手牌/牌库）并进入战场，创造一个召唤事件并变为可交互状态。（钴制卫士和鱼人招潮者会由于预召唤响应BUG在随从进场前排队结算）。
 After Summon Phase  
 召唤后  
+
+Minions removed from play during summoning  
+随从在召唤时从游戏移除  
+A few effects can cause minions to be removed from play after a minion enters play but before its summoning completes, usually by mortally wounding them.  
+一些效果能导致一个随从在其召唤事件完成前被移除场上，通常通过对其造成致命伤。  
+If the minion being played or the target of its Battlecry is removed, the Battlecry is not canceled, but uses the minion's new position and attributes in the Graveyard instead of its old in play status. Note that when minions are placed in the Graveyard, they are restored to default attributes, including their original maximum Health.  
+如果一个随从或其战吼目标被移除场上，战吼不会取消，而是用它们在墓地的位置和状态代替。注意当随从被放置在墓地时，它们会恢复至初始属性，包括它们的最大生命值。  
+If the minion being summoned is removed from play before the After Play Phase, each Secret may or may not trigger depending on the secret. For instance Mirror Entity will trigger targeting the minion in the Graveyard, while Snipe will simply not trigger. However, the After Summon Phase is cancelled entirely.  
+如果随从在使用后前从场上移除，每个奥秘是否触发取决于奥秘本身。例如，镜像实体会选择墓地的随从触发，而狙击不会触发。然而，召唤后会彻底取消。
