@@ -94,4 +94,25 @@ Some triggers have a Priority that supersedes order of play and always triggers 
 Baron Rivendare also cannot add additional triggers once a Queue has been populated.   
 一旦一个队列已经完成，瑞文戴尔男爵就不能增加额外的触发。  
 Mechanics that play a minion from your hand or from your deck have a bug that makes the new minion the oldest, not newest. (For more information, see the Force play section.)  
-从你的手上或卡组直接使用一个随从的机制有一些bug会让新的随从变成最早的，而非最新的。（更多信息参阅强制使用章节）
+从你的手上或卡组直接使用一个随从的机制有一些bug会让新的随从变成最老的，而非最新的。（更多信息参阅强制使用章节）
+
+Rule 3: Once a Phase begins, nested Phases with their own Queues may start and end inside of it, but only the outermost Phase ending initiates the Death Creation Step.  
+规则3：一旦一个时点开始处理，有着各自队列的嵌套的时点会在其内部开始和结束，但是只有最外层的时点结束后才会开始死亡创造步骤。  
+
+This means that you will NEVER see an Entity be killed in the middle of a Phase, no matter how complexly nested it becomes.  
+这意味着你不可能看见一个实体在一个时点中间被杀死，无论嵌套多么复杂。  
+This also means that even though Sequences like summoning a minion have many Phases, if it occurs as a consequence of another Player Action instead of being due to playing a card, the entire thing happens before any Deaths occur.  
+这也意味着虽然一个流程如召唤一个随从可能包含许多时点，如果它作为结果出现在另一个玩家动作而不是使用牌，这整个流程会在任何死亡发生前处理完。  
+
+Examples:
+例子：  
+You play Knife Juggler then Dr. Boom. When Dr. Boom's Battlecry (a Phase) begins, Boom Bots are summoned, and each one triggers the Knife Juggler to throw knives at enemy minions. Even though minion summoning is a Sequence of multiple Phases, we are already inside of a Phase, so the entire Battlecry remains inside of one Phase, rather than starting and stopping. Finally when the Battlecry resolves, Deaths are processed and the Deathrattles go off.  
+你使用飞刀杂耍者和砰砰博士。当砰砰博士的战吼（一个时点）开始后，砰砰机器人被召唤，然后每个触发飞刀杂耍者向敌方随从掷出飞刀。虽然随从召唤是由多个时点组成的流程，但是这些已经在一个时点里，所以整个战吼持续在一个时点里，而不是开始或结束。最后战吼处理完毕，死亡事件开始生成且亡语开始生效。  
+You play three Unstable Ghoul. Your opponent plays an Acolyte of Pain, damages it to 1 Health and casts Flamestrike. All three Unstable Ghouls's Deaths are considered in one Phase, meaning that the Acolyte of Pain is hit, triggered and draws three cards, despite being mortally wounded after the first Deathrattle. Finally the Phase ends and the Acolyte of Pain is killed.  
+你使用三个蹒跚的食尸鬼。你的对手使用苦痛侍僧，将它伤害到生命值为1，然后施放烈焰风暴。所有三个蹒跚的食尸鬼的死亡在同一个时点，意味着苦痛侍僧会受到伤害，触发并抽三张牌，尽管它在第一次亡语后已经受了致命伤。最后时点结束，苦痛侍僧被杀死。  
+Your opponent has a Cult Master and Novice Engineer both at 1 Health. You play a Mad Bomber, and both are reduced to 0 Health during the Battlecry Phase. Regardless of order of play, and regardless of the order the minions are mortally wounded by the bombs, the Cult Master cannot draw a card from the Novice Engineer dying because both deaths occur simultaneously after the Phase ends.  
+你的对手使用一个诅咒教派领袖和工程师学徒都只有1生命值。你使用疯狂投弹者，对方所有随从的生命值在战吼时被减少至0。无论使用顺序如何，诅咒教派领袖都不能因工程师学徒死亡而触发抽牌效果，因为它们在时点结束后同时死亡。  
+Exceptions:
+例外:
+There are three effects in the game that break this rule and kill minions in the middle of a Phase. For more information, see the Forced Death Phase section.  
+游戏中有三个效果打破了这条规则而在一个时点中杀死随从。详情参阅强制死亡章节。  
