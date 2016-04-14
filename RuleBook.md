@@ -300,3 +300,66 @@ If the minion being played or the target of its Battlecry is removed, the Battle
 如果一个随从或其战吼目标被移除场上，战吼不会取消，而是用它们在墓地的位置和状态代替。注意当随从被放置在墓地时，它们会恢复至初始属性，包括它们的最大生命值。  
 If the minion being summoned is removed from play before the After Play Phase, each Secret may or may not trigger depending on the secret. For instance Mirror Entity will trigger targeting the minion in the Graveyard, while Snipe will simply not trigger. However, the After Summon Phase is cancelled entirely.  
 如果随从在使用后前从场上移除，每个奥秘是否触发取决于奥秘本身。例如，镜像实体会选择墓地的随从触发，而狙击不会触发。然而，召唤后会彻底取消。
+
+Combat  
+战斗  
+When you order a minion to attack another minion, the following Sequence takes place: (As with other Sequences, if the attacker or defender leaves play for any reason, the current Phase will finish resolving but the Sequence will end early afterwards.)  
+当你令一个角色进攻另一个角色时，下列流程会依次触发：（如同其他流程一样，如果攻击者或防御者在中途从场上移除，当前时点结算完后，流程会终止。）  
+Combat Preparation Phase: A Proposed Attack Event is resolved. If the defender changes, another Proposed Attack Event is created and placed in this Phase's Event Queue after the current Proposed Attack Event. (It will begin to resolve when the current Proposed Attack Event finishes resolving.) Finally, an Attack Event is resolved. Additionally, the attacker will lose Stealth.  
+战斗准备时：一个准备攻击事件会被结算。如果防御者变更，另一个准备攻击事件会被生成并放在该时点队尾。（它将会在当前准备攻击事件结算后开始结算。）最终，准备攻击时结算完毕。额外的，攻击者会在此时失去潜行。  
+Hearthstone checks for win/loss/draw.  
+炉石传说检测是否胜利/失败/平局。  
+Combat Phase: Damage is dealt simultaneously in the order (attack, counterattack) and resolved. The attacker's weapon loses durability (unless prevented due to the weapon being Immune from Gorehowl's Enchantment). An After Attack Event is resolved even if 0 damage was dealt to the defender.  
+战斗时：互相同时造成伤害并按照（攻击，反击）结算。攻击者的武器会失去耐久度。一个攻击后事件会结算（甚至只对防御者造成0点伤害）。  
+Hearthstone checks for win/loss/draw.  
+炉石传说检测是否胜利/失败/平局。  
+The subjects of Combat are the attacker and defender. Even if the attacker or defender (or both) is mortally wounded or leaves play, triggers that ask what the current attacker/defender is will continue to be able to queue and resolve (assuming their other conditions are satisfied.)  
+战斗的对象是攻击者和防御者。即使攻击者或防御者（或者两者都）受了致命伤或从场上移除，与当前攻击者/防御者有关的触发技仍会排队结算。
+
+Proposed Attack Event  
+准备攻击事件
+Triggers on the Proposed Attack Event include those that can change the defender, cause the attacker to become mortally wounded or leave play, and so on.  
+准备攻击事件的触发技包括下列：改变防御者，使攻击者受到致命伤或从场上移除等等。  
+At the start of resolving a Proposed Attack Event, triggers queue based on the defender at that moment, and will remain in the queue even if the defender changes.  
+在准备攻击事件开始时，触发技根据当前防御者排序结算，即使防御者变更也会继续结算。  
+When the defender changes, a new Proposed Attack Event is inserted into the Combat Preparation Phase's Event Queue after the currently resolving one. (It will therefore resolve once the current Proposed Attack Event finishes resolving, and therefore use the defender at that point in time.)
+当防御者改变时，一个新的准备攻击事件会在当前的结算完后，加入当前的战斗准备时的队列。  
+(As a reminder: Queuing conditions are only required to be true when the Event they trigger on starts to resolve, whereas trigger conditions are only required to be true when the trigger resolves.)  
+（记住：排队时触发技的条件不需要满足，触发技的条件只需要在结算时满足。）  
+A full list is as follows:  
+一个完整列表：  
+
+Freezing Trap has a queuing condition of 'attacker is an enemy minion' and a trigger condition of 'attacker is not mortally wounded'.  
+冰冻陷阱的排队条件是攻击者是敌方随从，触发条件是攻击者未受致命伤。  
+Misdirection has a queuing condition of 'defender is your hero and there is a third, not mortally wounded Character in play' and a trigger condition of 'attacker is in play and - if it is a minion - not mortally wounded, and there is a third, not mortally wounded Character in play'.  
+误导的排队条件是防御者是你的英雄且存在第三方未受致命伤的角色，触发条件是攻击者存活且存在第三方未受致命伤的角色。
+Explosive Trap has a queuing condition of 'defender is your hero'.  爆炸陷阱的排队条件是防御者是你的英雄。  
+Snake Trap has a queuing condition of 'defender is a friendly minion' and a trigger condition of 'board is not full'.  
+毒蛇陷阱的排队条件是防御者是一个友方随从且触发条件是我方场上未满。  
+Noble Sacrifice has a trigger condition of 'board is not full'.    
+崇高牺牲的触发条件是场上未满。  
+Vaporize has a queuing condition of 'attacker is an enemy minion and defender is your hero' and a trigger condition of 'attacker is in play and not mortally wounded'.  
+蒸发的排队条件是攻击者是一个敌方随从且防御者是你的
+Clumsy and Mogor the Ogre cannot trigger on a later Proposed Attack Event if they fail the 50% chance.[168]
+Clumsy has a queuing condition of 'attacker is this minion'.
+Mogor the Ogre has a queuing condition of 'attacker is a minion'.
+Attack Event[edit | edit source]
+Triggers on the Attack Event include those that need to occur only once the final defender is known, or those that do not significantly affect the game state. The Attack Event is only resolved if the previous Proposed Attack Event did not change the defender. A full list is as follows:
+
+Truesilver Champion has a condition of 'attacker is your hero'.[169][170][171]
+Ice Barrier has a condition of 'defender is your hero'.[172][173][174]
+Gorehowl has a condition of 'attacker is your hero and defender is a minion'. It attaches an Enchantment called "Bloodrage" to Gorehowl, which makes Gorehowl Immune and triggers on the After Attack Event.[175][176]
+Cutpurse has a condition of 'attacker is this minion and defender is a hero'. It implicitly requires the Cutpurse to still be in play.[177]
+Power Word: Glory has a condition of 'attacker is this minion'. It implicitly requires the attacker to still be in play, as it gets detached when the attacker leaves play.[178]
+Blessing of Wisdom has a condition of 'attacker is this minion'. It implicitly requires the attacker to still be in play, as it gets detached when the attacker leaves play.[179][180][181]
+After Attack Event[edit | edit source]
+An After Attack Event is resolved as long as the attack was successful, even if it dealt 0 damage.
+
+(Note that unlike other triggers that go 'after' something, such as Rumbling Elemental and Djinni of Zephyrs, the After Attack Event is resolved in the same Phase, not a later Phase, as the combat damage, meaning death processing and aura updates are not done in-between.)
+
+Triggers on the After Attack Event are as follows:
+
+Gorehowl has a condition of 'attacker is your hero and defender is a minion' and attaches to itself an Enchantment granting -1 Attack.
+Gorehowl's Enchantment "Bloodrage" has a condition of 'attacker is your hero' and triggers to detach, ending Gorehowl's temporary Immune state.[182]
+Bear Trap has a condition of 'defender is your hero and board is not full'.[183][184]
+Foe Reaper 4000/Magnataur Alpha has a condition of 'attacker is this minion'.[185]
